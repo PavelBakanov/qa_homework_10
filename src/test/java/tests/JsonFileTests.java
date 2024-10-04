@@ -22,6 +22,9 @@ public class JsonFileTests {
 
             Users users = om.readValue(reader, Users.class);
 
+            Assertions.assertEquals(1.025, users.getDataBaseVersion());
+            System.out.println(users.getDataBaseVersion());
+
             Assertions.assertEquals(1, users.getUsers().get(0).getId());
             Assertions.assertEquals("John Doe", users.getUsers().get(0).getName());
             Assertions.assertEquals(30, users.getUsers().get(0).getAge());

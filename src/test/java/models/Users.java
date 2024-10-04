@@ -4,6 +4,11 @@ import java.util.List;
 
 public class Users {
     private List<User> users;
+    private double dataBaseVersion;
+
+    public double getDataBaseVersion() {
+        return dataBaseVersion;
+    }
 
     public List<User> getUsers() {
         return users;
