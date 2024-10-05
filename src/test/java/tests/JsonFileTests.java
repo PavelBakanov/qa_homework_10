@@ -3,6 +3,7 @@ package tests;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Users;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStreamReader;
@@ -13,7 +14,7 @@ public class JsonFileTests {
     private final ClassLoader cl = JsonFileTests.class.getClassLoader();
     private static final ObjectMapper om = new ObjectMapper();
 
-
+    @DisplayName("Тест берет json файл из ресурсов и проверяет данные внутри него")
     @Test
     public void jsonFileParsingTest() throws Exception {
         try (Reader reader = new InputStreamReader(
@@ -24,7 +25,7 @@ public class JsonFileTests {
 
             Assertions.assertThat(users.getUsers().get(0).getId()).isEqualTo(1);
             Assertions.assertThat(users.getUsers().get(0).getName()).isEqualTo("John Doe");
-            Assertions.assertThat( users.getUsers().get(0).getAge()).isEqualTo(30);
+            Assertions.assertThat(users.getUsers().get(0).getAge()).isEqualTo(30);
 
             Assertions.assertThat(users.getUsers().get(1).getId()).isEqualTo(2);
             Assertions.assertThat(users.getUsers().get(1).getName()).isEqualTo("Jane Doe");
@@ -32,7 +33,7 @@ public class JsonFileTests {
 
             Assertions.assertThat(users.getUsers().get(2).getId()).isEqualTo(3);
             Assertions.assertThat(users.getUsers().get(2).getName()).isEqualTo("Bob Smith");
-            Assertions.assertThat( users.getUsers().get(2).getAge()).isEqualTo(35);
+            Assertions.assertThat(users.getUsers().get(2).getAge()).isEqualTo(35);
         }
     }
 }

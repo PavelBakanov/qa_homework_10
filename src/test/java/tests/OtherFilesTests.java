@@ -4,6 +4,7 @@ import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStreamReader;
@@ -14,6 +15,7 @@ import java.util.zip.ZipInputStream;
 public class OtherFilesTests {
     private final ClassLoader cl = JsonFileTests.class.getClassLoader();
 
+    @DisplayName("Тест берет pdf файл из ресурсов, проверяет данные внутри него, и выводит данные в консоль")
     @Test
     void pdfFileParsingTest() throws Exception {
         PDF pdf = null;
@@ -29,12 +31,13 @@ public class OtherFilesTests {
                 }
             }
 
-            System.out.println(pdf.text);
-
             Assertions.assertThat(pdf.text).contains("Пример pdf");
+
+            System.out.println(pdf.text);
         }
     }
 
+    @DisplayName("Тест берет xlsx файл из ресурсов, проверяет данные внутри него, и выводит часть из них в консоль")
     @Test
     void xlsxFileParsingTest() throws Exception {
         XLS xlsx = null;
@@ -50,12 +53,13 @@ public class OtherFilesTests {
                 }
             }
 
-            System.out.println(xlsx.excel.getSheetAt(0).getRow(5).getCell(5).getStringCellValue());
             String actualValue = xlsx.excel.getSheetAt(0).getRow(5).getCell(5).getStringCellValue();
             Assertions.assertThat(actualValue).contains("Беговая 252");
+
+            System.out.println(xlsx.excel.getSheetAt(0).getRow(5).getCell(5).getStringCellValue());
         }
     }
-
+    @DisplayName("Тест берет csv файл из ресурсов, проверяет данные внутри него, и выводит их в консоль")
     @Test
     void csvFileParsingTest() throws Exception {
         CSVReader csvReader = null;
