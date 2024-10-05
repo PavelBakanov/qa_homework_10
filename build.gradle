@@ -18,6 +18,7 @@ dependencies {
     testImplementation ("com.codeborne:xls-test:1.4.3")
     testImplementation ("com.opencsv:opencsv:5.9")
     testImplementation("com.fasterxml.jackson.core:jackson-databind:2.18.0")
+    testImplementation("org.assertj:assertj-core:3.26.3")
 
 }
 
