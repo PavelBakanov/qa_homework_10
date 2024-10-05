@@ -73,18 +73,16 @@ public class OtherFilesTests {
 
             List<String[]> data = csvReader.readAll();
 
-            for (int i = 0; i < data.toArray().length ; i++) {
+            for (String []str : data) {
 
-                for (String value : data.get(i)) {
+                for (String value : str) {
                     System.out.print(value + " ");
                 }
                 System.out.println();
             }
 
-
             Assertions.assertThat(data.get(0)).isEqualTo(new String[]{"#userName", "Ivan Ivanov", "#name"});
             Assertions.assertThat(data.get(1)).isEqualTo(new String[]{"#userEmail", "ivanov@ivan.ru", "#email"});
-
         }
     }
 
